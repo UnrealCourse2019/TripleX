@@ -1,4 +1,9 @@
-int main()
+#include <iostream>
+#include <box2d>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
 {
-    return 0;
+  cout << "Please enter two numbers" << endl;
 }
