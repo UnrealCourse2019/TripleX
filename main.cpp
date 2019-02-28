@@ -1,9 +1,10 @@
 #include <iostream>
+#include <ctime>
 
 void PlayGameAtDifficulty(int difficulty)
 {
   std::cout << "==================================================" << std::endl;
-  std::cout << "You're a secret agent breaking into level " << difficulty << " server room" << std::endl;
+  std::cout << "You're a secret agent breaking into LEVEL " << difficulty << " server room" << std::endl;
   std::cout << "Your SuperHacker 2000 tells you the following information..." << std::endl;
 
   srand(time(NULL));  // create new random sequence based on time of day
@@ -11,20 +12,21 @@ void PlayGameAtDifficulty(int difficulty)
   const int b = rand() % difficulty + 2;
   const int c = rand() % difficulty + 2;
 
-  int sum = a + b + c;
-  int product = a * b * c;
+  const int sum = a + b + c;
+  const int product = a * b * c;
 
   std::cout << std::endl;
   std::cout << "+ There are three numbers in the code" << std::endl;
   std::cout << "+ The codes add-up to " << sum << std::endl;
   std::cout << "+ The codes multiply to give " << product << std::endl;
 
-  int answer, trialSum, trialProduct = 1; // Note required starting product
+  std::cout << std::endl;
+  std::cout << "Enter the three code numbers followed by x" << std::endl;
+  std::cout << std::endl;
 
-  std::cout << std::endl;
-  std::cout << "Type the code numbers with spaces between" << std::endl;
-  std::cout << "Type Ctrl+D on new line to enter code" << std::endl;
-  std::cout << std::endl;
+  int answer;
+  int trialSum = 0;
+  int trialProduct = 1;  // Note required starting product
 
   while(std::cin >> answer)
   {
@@ -47,9 +49,14 @@ void PlayGameAtDifficulty(int difficulty)
 int main()
 {
   std::system("clear");
-  PlayGameAtDifficulty(2);
-  PlayGameAtDifficulty(3);
-  // PlayGameAtDifficulty(5);
-  // PlayGameAtDifficulty(7);
-  // PlayGameAtDifficulty(10);
+  int difficulty = 2;
+  int maxDifficulty = 10;
+  while (difficulty < maxDifficulty)
+  {
+    PlayGameAtDifficulty(difficulty);
+    std::cin.clear();  //clears the failbit
+    std::cin.ignore();  //discards the buffer
+    ++difficulty;
+  }
+  std::cout << "WOW - You're a master hacker!" << std::endl;
 }
