@@ -9,7 +9,7 @@
     "editor.suggestLineHeight": 14,
     "editor.quickSuggestionsDelay": 500,
     "editor.hover.delay": 200,
-    "C_Cpp.clang_format_fallbackStyle": "LLVM",
+    "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
     "C_Cpp.clang_format_style": "Visual Studio",
     "files.associations": {
         ".eslintrc": "javascript",
