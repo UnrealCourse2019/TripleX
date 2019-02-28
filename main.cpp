@@ -16,9 +16,17 @@ int main()
   std::cout << "+ The codes add-up to " << sum << endl;
   std::cout << "+ The codes multiply to give " << product << endl;
   
-  int answer[2];
+  int answer, trialSum, trialProduct = 1;  // Note required starting product
+
+  std::cout << "Type the code numbers with spaces between" << endl;
+  std::cout << "Type Ctrl+D to enter code" << endl;
+
   while(std::cin >> answer)
   {
-    std::cout << answer << endl;
+    trialSum += answer;
+    trialProduct *= answer;
   }
+
+  std::cout << trialSum << endl;
+  std::cout << trialProduct << endl;
 }

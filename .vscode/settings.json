@@ -2,7 +2,7 @@
     "editor.codeLens": false,
     "editor.formatOnPaste": true,
     "window.zoomLevel": 1,
-    "editor.fontSize": 17,
+    "editor.fontSize": 16,
     "workbench.activityBar.visible": true,
     "editor.minimap.enabled": false,
     "editor.suggestFontSize": 14,
