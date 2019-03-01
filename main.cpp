@@ -3,8 +3,8 @@
 
 void PlayGameAtDifficulty(int difficulty)
 {
-  std::cout << "You're a secret agent breaking into LEVEL " << difficulty << " server room" << std::endl;
-  std::cout << "Your SuperHacker 2000 tells you the following information..." << std::endl;
+  std::cout << "You're a secret agent breaking into LEVEL " << difficulty << " server room\n";
+  std::cout << "Your SuperHacker 2000 tells you the following information...\n";
 
   srand(time(NULL)); // create new random sequence based on time of day
   const int a = rand() % difficulty + difficulty;
@@ -15,12 +15,12 @@ void PlayGameAtDifficulty(int difficulty)
   const int product = a * b * c;
 
   std::cout << std::endl;
-  std::cout << "+ There are three numbers in the code" << std::endl;
+  std::cout << "+ There are three numbers in the code\n";
   std::cout << "+ The codes multiply to give " << product << std::endl;
   std::cout << "+ The codes add-up to " << sum << std::endl;
 
   std::cout << std::endl;
-  std::cout << "Enter the three code numbers followed by x" << std::endl;
+  std::cout << "Enter the three code numbers followed by x\n";
   std::cout << std::endl;
 
   int answer;
@@ -37,12 +37,12 @@ void PlayGameAtDifficulty(int difficulty)
   std::cout << std::endl;
   if (trialSum == sum && trialProduct == product)
   {
-    std::cout << "CONGRATULATIONS, YOU'RE IN. Now hurry before anyone finds you." << std::endl;
-    std::cout << "==============================================================" << std::endl;
+    std::cout << "CONGRATULATIONS, YOU'RE IN. Now hurry before anyone finds you.\n";
+    std::cout << "==============================================================\n";
   }
   else
   {
-    std::cout << "BOOM :-( You failed miserably, and died horribly." << std::endl;
+    std::cout << "BOOM :-( You failed miserably, and died horribly.\n";
   }
   std::cout << std::endl;
 }
@@ -53,7 +53,7 @@ int main()
 
   int difficulty = 2;
   int maxDifficulty = 2;
-  while (difficulty < maxDifficulty)
+  while (difficulty <= maxDifficulty)
   {
     PlayGameAtDifficulty(difficulty);
     std::cin.clear();  // clears the failbit
@@ -61,6 +61,6 @@ int main()
     ++difficulty;
   }
 
-  std::cout << "WOW - You're a master hacker!" << std::endl;
+  std::cout << "WOW - You're a master hacker!\n";
   return 0;  // exit with no error code
 }
