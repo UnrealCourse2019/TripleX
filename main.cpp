@@ -52,7 +52,7 @@ int main()
   std::system("clear");  // clears the terminal
 
   int difficulty = 2;
-  int maxDifficulty = 2;
+  int maxDifficulty = 10;
   while (difficulty <= maxDifficulty)
   {
     PlayGameAtDifficulty(difficulty);
