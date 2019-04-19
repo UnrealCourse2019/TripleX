@@ -1,87 +1,64 @@
 #include <iostream>
-#include <ctime>
 
-struct FCodeStruct
+bool PlayGame(int Difficulty)
 {
-  int Sum;
-  int Product;
-};
+    // Print welcome messages to the terminal
+    std::cout << "\nYou are a secret agent breaking into a level "
+    std::cout << Difficulty <<  " secure server room... \n"
+    std::cout << "Enter the code to continue...\n";
 
-struct FGuessStruct
-{
-  int GuessA;
-  int GuessB;
-  int GuessC;
-};
+    const int CodeA = 4;
+    const int CodeB = 3;
+    const int CodeC = 2;
+    
+    const int CodeSum = CodeA + CodeB + CodeC;
+    const int CodeProduct = CodeA * CodeB * CodeC;
 
-void PrintIntroduction(int Strength)
-{
-  std::system("clear");  // clears the terminal
-  std::cout << "You're a secret agent breaking into a level " << Strength << " server room\n";
-  std::cout << "Your SuperHacker 2000 tells you the following information...\n";
-}
+    std::cout << "\n+ There are 3 numbers in the code\n";
+    std::cout << "+ The codes add-up to: " << CodeSum << std::endl;
+    std::cout << "+ The codes multiply to give: " << CodeProduct << std::endl;
 
-FCodeStruct CreateCodeWithStrength(int Strength)
-{
-  srand(time(NULL)); // create new random sequence based on time of day
-  const int CodeA = rand() % Strength + Strength; // TODO simplify
-  const int CodeB = rand() % Strength + Strength;
-  const int CodeC = rand() % Strength + Strength;
-  
-  FCodeStruct CodeThisGame;
-  CodeThisGame.Product = CodeA * CodeB * CodeC;
-  CodeThisGame.Sum = CodeA + CodeB + CodeC;
+    int GuessA, GuessB, GuessC;
+    std::cin >> GuessA;
+    std::cin >> GuessB;
+    std::cin >> GuessC;
 
-  return CodeThisGame;
-}
+    int GuessSum, GuessProduct;
+    GuessSum = GuessA + GuessB + GuessC;
+    GuessProduct = GuessA * GuessB * GuessC;
 
-void PrintHint(FCodeStruct Code)
-{
-  std::cout << std::endl;
-  std::cout << "+ There are three numbers in the Code\n";
-  std::cout << "+ The Codes multiply to give " << Code.Product << std::endl;
-  std::cout << "+ The Codes add-up to " << Code.Sum << std::endl;
-  std::cout << std::endl;
-  std::cout << "Enter the three Code numbers followed by x\n";
-}
-
-FGuessStruct GetPlayerGuess()
-{
-  FGuessStruct PlayerGuess;
-  std::cin >> PlayerGuess.GuessA;
-  std::cin >> PlayerGuess.GuessB;
-  std::cin >> PlayerGuess.GuessC;
-
-  return PlayerGuess;
-}
-
-bool IsCodeValid(FGuessStruct Guess, FCodeStruct Code)
-{
-  const int GuessSum = Guess.GuessA + Guess.GuessB + Guess.GuessC;
-  const int GuessProduct = Guess.GuessA * Guess.GuessB * Guess. GuessC;
-  return (GuessSum == Code.Sum && GuessProduct == Code.Product);
-}
-
-void PrintResults(bool IsCorrect)
-{
-  if (IsCorrect)
-  {
-    std::cout << "CONGRATULATIONS, YOU'RE IN. Now hurry before anyone finds you.\n";
-    std::cout << "==============================================================\n";
-  }
-  else
-  {
-    std::cout << "BOOM :-( You failed miserably, and died horribly.\n";
-  }
+    if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+    {
+        std::cout << "\n*** Well done agent! You have extracted a file! ***\n";
+        return true;
+    }
+    else
+    {
+        std::cout << "\n*** You entered the wrong code! Careful agent...try again! ***\n";
+        return false;
+    }
 }
 
 int main()
 {
-  const int Difficulty = 3;
-  PrintIntroduction(Difficulty);
-  const FCodeStruct PublicCode = CreateCodeWithStrength(Difficulty);
-  PrintHint(PublicCode);
-  const FGuessStruct PlayerGuess = GetPlayerGuess();
-  PrintResults(IsCodeValid(PlayerGuess, PublicCode));
-  return 0;
+    std::system("cls"); // clear terminal
+
+    int GameDifficulty = 3;
+    int MaxDifficulty = 5;
+
+    while (GameDifficulty <= MaxDifficulty)
+    {
+        bool bLevelComplete = PlayGame(GameDifficulty);
+
+        std::cin.clear();
+        std::cin.ignore();
+
+        if (bLevelComplete)
+        {
+            GameDifficulty++;
+        }
+    }
+
+    std::cout << "\n*** You got all the files! Now get out of there!*** \n";
+    return 0;
 }
