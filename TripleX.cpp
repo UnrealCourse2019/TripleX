@@ -29,5 +29,16 @@ int main()
     int GuessSum = GuessA + GuessB + GuessC;
     int GuessProduct = GuessA * GuessB * GuessC;
 
+    if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+    {
+        std::cout << "You win!";
+    }
+    
+    else
+    {
+        std::cout << "You lose!";
+    }
+    
+
     return 0;
 }
