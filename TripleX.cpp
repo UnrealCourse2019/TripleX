@@ -2,11 +2,11 @@
 
 void PrintIntroduction()
 {
-    std::cout << "You are a secret agent breaking into a secure server room...\n";
+    std::cout << "\n\nYou are a secret agent breaking into a secure server room...\n";
     std::cout << "Enter the correct code to continue...\n\n";
 }
 
-void PlayGame()
+bool PlayGame()
 {
     PrintIntroduction();
 
@@ -34,15 +34,23 @@ void PlayGame()
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
         std::cout << "\nYou win!";
+        return true;
     }
     else
     {
         std::cout << "\nYou lose!";
+        return false;
     }
 }
 
 int main()
 {
-    PlayGame();
+    while(true)
+    {
+        bool bLevelComplete = PlayGame();
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
+    }
+
     return 0;
 }
