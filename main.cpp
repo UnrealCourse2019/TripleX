@@ -3,8 +3,8 @@
 bool PlayGame(int Difficulty)
 {
     // Print welcome messages to the terminal
-    std::cout << "\nYou are a secret agent breaking into a level "
-    std::cout << Difficulty <<  " secure server room... \n"
+    std::cout << "\nYou are a secret agent breaking into a level " << Difficulty;
+    std::cout <<  " secure server room... \n";
     std::cout << "Enter the code to continue...\n";
 
     const int CodeA = 4;
@@ -19,13 +19,10 @@ bool PlayGame(int Difficulty)
     std::cout << "+ The codes multiply to give: " << CodeProduct << std::endl;
 
     int GuessA, GuessB, GuessC;
-    std::cin >> GuessA;
-    std::cin >> GuessB;
-    std::cin >> GuessC;
+    std::cin >> GuessA >> GuessB >> GuessC;
 
-    int GuessSum, GuessProduct;
-    GuessSum = GuessA + GuessB + GuessC;
-    GuessProduct = GuessA * GuessB * GuessC;
+    int GuessSum = GuessA + GuessB + GuessC;
+    int GuessProduct = GuessA * GuessB * GuessC;
 
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
@@ -43,19 +40,19 @@ int main()
 {
     std::system("cls"); // clear terminal
 
-    int GameDifficulty = 3;
+    int LevelDifficulty = 3;
     int MaxDifficulty = 5;
 
-    while (GameDifficulty <= MaxDifficulty)
+    while (LevelDifficulty <= MaxDifficulty)
     {
-        bool bLevelComplete = PlayGame(GameDifficulty);
+        bool bLevelComplete = PlayGame(LevelDifficulty);
 
         std::cin.clear();
         std::cin.ignore();
 
         if (bLevelComplete)
         {
-            GameDifficulty++;
+            ++LevelDifficulty;
         }
     }
 
