@@ -35,7 +35,10 @@ bool PlayGame(int Difficulty)
     // Check if the players guess is correct
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
-        std::cout << "\n*** Well done agent! You have extracted a file! Keep going! ***";
+        if (Difficulty = 5)
+            std::cout << "\n*** Great work agent! You got all the files! Now get out of there! ***\n";
+        else
+            std::cout << "\n*** Well done agent! You have extracted a file! Keep going! ***";
         return true;
     }
     else
@@ -63,6 +66,6 @@ int main()
             ++LevelDifficulty;
         }
     }
-    std::cout << "\n*** Great work agent! You got all the files! Now get out of there! ***\n";
+    
     return 0;
 }
